@@ -1,0 +1,1 @@
+web: fortune-cookie-gen
