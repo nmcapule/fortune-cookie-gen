@@ -15,8 +15,20 @@
 			"revisionTime": "2016-09-14T23:45:33Z"
 		},
 		{
+			"checksumSHA1": "NJHTyLwheqVk7+syzj9UN7p1dKs=",
+			"path": "github.com/jmoiron/sqlx/reflectx",
+			"revision": "05b81a7d5d38058e42148dc01f17daf4acba4640",
+			"revisionTime": "2016-09-14T23:45:33Z"
+		},
+		{
 			"checksumSHA1": "88ochAZ1SsbAH6DgBQ5eTUChFE0=",
 			"path": "github.com/lib/pq",
+			"revision": "ae8357db35d721c58dcdc911318b55bef6b1b001",
+			"revisionTime": "2016-10-14T01:16:34Z"
+		},
+		{
+			"checksumSHA1": "xppHi82MLqVx1eyQmbhTesAEjx8=",
+			"path": "github.com/lib/pq/oid",
 			"revision": "ae8357db35d721c58dcdc911318b55bef6b1b001",
 			"revisionTime": "2016-10-14T01:16:34Z"
 		}
