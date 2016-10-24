@@ -15,11 +15,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Resp struct {
-	Error  int         `json:"id"`
-	Output interface{} `json:"output"`
-}
-
 type Cookie struct {
 	ID           int       `json:"id"`
 	Message      string    `json:"message"`
@@ -88,6 +83,30 @@ func getCookiesHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_, err = w.Write(b)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func getRandomCookieHandler(w http.ResponseWriter, r *http.Request) {
+	var cookie Cookie
+
+	query := RowSelectCookie + " ORDER BY RANDOM() LIMIT 1"
+
+	err := db.Get(&cookie, query)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	_, err = db.Exec(RowUpdateCookieCounter, cookie.Passes+1, cookie.ID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = json.NewEncoder(w).Encode(cookie)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -225,6 +244,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", mainHandler)
 	r.HandleFunc("/sap", getCookiesHandler)
+	r.HandleFunc("/sapr", getRandomCookieHandler)
 	r.HandleFunc("/sap/{id:[0-9]+}", getCookieHandler)
 	r.HandleFunc("/up", postCookieHandler)
 	r.HandleFunc("/matoyo", adminHandler)
