@@ -220,15 +220,16 @@ func main() {
 	}
 
 	templates = template.Must(template.ParseFiles("templates/index.html"))
+	fs := http.FileServer(http.Dir("./static"))
 
 	r := mux.NewRouter()
-
 	r.HandleFunc("/", mainHandler)
 	r.HandleFunc("/sap", getCookiesHandler)
 	r.HandleFunc("/sap/{id:[0-9]+}", getCookieHandler)
 	r.HandleFunc("/up", postCookieHandler)
 	r.HandleFunc("/matoyo", adminHandler)
 	http.Handle("/", r)
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	port, ok := os.LookupEnv("PORT")
 	if !ok {
