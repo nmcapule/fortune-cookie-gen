@@ -1,6 +1,25 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "urMd7A9QPAJYY0GZJL9qBhlUmD8=",
+			"path": "github.com/gorilla/mux",
+			"revision": "757bef944d0f21880861c2dd9c871ca543023cba",
+			"revisionTime": "2016-09-20T23:08:13Z"
+		},
+		{
+			"checksumSHA1": "p/qzxBRYGQTr4JKDAN8JxtSv5iU=",
+			"path": "github.com/jmoiron/sqlx",
+			"revision": "05b81a7d5d38058e42148dc01f17daf4acba4640",
+			"revisionTime": "2016-09-14T23:45:33Z"
+		},
+		{
+			"checksumSHA1": "88ochAZ1SsbAH6DgBQ5eTUChFE0=",
+			"path": "github.com/lib/pq",
+			"revision": "ae8357db35d721c58dcdc911318b55bef6b1b001",
+			"revisionTime": "2016-10-14T01:16:34Z"
+		}
+	],
 	"rootPath": "github.com/nmcapule/fortune-cookie-gen"
 }
